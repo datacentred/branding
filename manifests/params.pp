@@ -1,6 +1,6 @@
-# Class: dc_branding::params
+# Class: branding::params
 #
-class dc_branding::params {
+class branding::params {
 
   case $::osfamily {
     'RedHat': {
