@@ -12,15 +12,11 @@
 # Compatible with OpenStack Kilo or greater
 #
 class branding::horizon (
-  $release = 'kilo',
+  $release = 'mitaka',
 ) {
 
   $horizon_dir = '/usr/share/openstack-dashboard'
   $theme_dir = '/usr/share/openstack-dashboard-datacentred-theme'
-
-  package { 'openstack-dashboard-ubuntu-theme':
-    ensure => absent,
-  } ->
 
   file { $theme_dir:
     ensure  => directory,
@@ -34,36 +30,17 @@ class branding::horizon (
   } ->
 
   file { "${horizon_dir}/openstack_dashboard/static/themes/datacentred":
-    ensure => link,
-    target => $theme_dir,
-  } ->
-
-  exec { 'branding::horizon collect':
-    cwd         => $horizon_dir,
-    command     => 'python manage.py collectstatic --noinput',
-    refreshonly => true,
-  } ->
-
-  exec { 'branding::horizon compress':
-    cwd         => $horizon_dir,
-    command     => 'python manage.py compress --force',
-    refreshonly => true,
+    ensure  => link,
+    target  => $theme_dir,
+    require => Package['horizon'],
   }
 
-  # Ensure horizon (and implicitly openstack-dashboard-ubuntu-theme) are
-  # installed before removing ubuntu branding and configuring the new one,
-  # this will deconfigure the existing theme first
-  Package['openstack-dashboard'] -> Class['branding::horizon']
+  file { "${horizon_dir}/openstack_dashboard/themes/datacentred":
+    ensure  => link,
+    target  => $theme_dir,
+    require => Package['horizon'],
+  }
 
-  # Perform the collection and compression only after the configuration file
-  # is generated
-  Concat['/etc/openstack-dashboard/local_settings.py'] -> Exec['branding::horizon collect']
-
-  # Ensure we collect and compress only on changes to the branding resources
-  File[$theme_dir] ~> Exec['branding::horizon collect']
-  File[$theme_dir] ~> Exec['branding::horizon compress']
-
-  # Restart the webserver on creation of new static resources
-  Exec['branding::horizon compress'] ~> Service['apache2']
+  File[$theme_dir] -> Exec[refresh_horizon_django_compress]
 
 }
