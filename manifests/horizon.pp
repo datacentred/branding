@@ -15,7 +15,7 @@ class branding::horizon (
   $release = 'mitaka',
 ) {
 
-  $horizon_dir = '/usr/share/openstack-dashboard'
+  $horizon_dir = '/var/lib/openstack-dashboard'
   $theme_dir = '/usr/share/openstack-dashboard-datacentred-theme'
 
   file { $theme_dir:
@@ -29,13 +29,13 @@ class branding::horizon (
     source  => "puppet:///modules/branding/horizon-${release}",
   } ->
 
-  file { "${horizon_dir}/openstack_dashboard/static/themes/datacentred":
+  file { "${horizon_dir}/static/themes/datacentred":
     ensure  => link,
     target  => $theme_dir,
     require => Package['horizon'],
   }
 
-  file { "${horizon_dir}/openstack_dashboard/themes/datacentred":
+  file { "${horizon_dir}/themes/datacentred":
     ensure  => link,
     target  => $theme_dir,
     require => Package['horizon'],
