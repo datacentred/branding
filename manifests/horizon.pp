@@ -29,12 +29,6 @@ class branding::horizon (
     source  => "puppet:///modules/branding/horizon-${release}",
   } ->
 
-  file { "${horizon_dir}/openstack_dashboard/static/themes/datacentred":
-    ensure  => link,
-    target  => $theme_dir,
-    require => Package['horizon'],
-  }
-
   file { "${horizon_dir}/openstack_dashboard/themes/datacentred":
     ensure  => link,
     target  => $theme_dir,
