@@ -1,0 +1,20 @@
+.navbar-default {
+  // a line below the navbar
+  border-bottom: 4px solid $brand-secondary;
+}
+
+#sidebar .panel {
+  // add slight shadow to help differentiate levels of dropdowns on the sidebar
+  @include box-shadow(0 1px 4px rgba(0, 0, 0, 0.2));
+}
+
+.panel-default > .panel-heading {
+  // sets proper background to the login header
+  background-color: $brand-primary;
+  border-bottom: 4px solid $brand-secondary;
+}
+
+.login .login-title {
+  // make the "Log in" string white
+  color: #fff;
+}

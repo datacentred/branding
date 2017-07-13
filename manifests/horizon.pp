@@ -4,19 +4,15 @@
 #
 # === Parameters
 #
-# [*release*]
-#   Openstack release name.  Dictates the plugin version to install.
-#
-# === Notes
-#
-# Compatible with OpenStack Kilo or greater
+# [*horizon_dir*]
+#   The main directory where Horizon is installed.
 #
 class branding::horizon (
-  $release = 'mitaka',
+  $horizon_dir = '/usr/share/openstack-dashboard/openstack_dashboard'
 ) {
 
-  $horizon_dir = '/usr/share/openstack-dashboard'
-  $theme_dir = '/usr/share/openstack-dashboard-datacentred-theme'
+  # directory where the theme will be stored
+  $theme_dir = "${horizon_dir}/themes/datacentred"
 
   file { $theme_dir:
     ensure  => directory,
@@ -26,21 +22,11 @@ class branding::horizon (
     recurse => true,
     purge   => true,
     force   => true,
-    source  => "puppet:///modules/branding/horizon-${release}",
-  } ->
-
-  file { "${horizon_dir}/openstack_dashboard/static/themes/datacentred":
-    ensure  => link,
-    target  => $theme_dir,
-    require => Package['horizon'],
+    source  => "puppet:///modules/branding",
+    require => Concat[$::horizon::params::config_file],
   }
 
-  file { "${horizon_dir}/openstack_dashboard/themes/datacentred":
-    ensure  => link,
-    target  => $theme_dir,
-    require => Package['horizon'],
-  }
-
-  File[$theme_dir] -> Exec[refresh_horizon_django_compress]
+  # trigger asset collection and compression after getting the theme
+  File[$theme_dir] ~> Exec['refresh_horizon_django_cache'] -> Exec['refresh_horizon_django_compress']
 
 }
