@@ -4,19 +4,21 @@
 #
 # === Parameters
 #
-# [*release*]
-#   Openstack release name.  Dictates the plugin version to install.
+# [*horizon_dir*]
+#   The main directory where Horizon is installed.
 #
-# === Notes
-#
-# Compatible with OpenStack Kilo or greater
-#
+
 class branding::horizon (
-  $release = 'mitaka',
+  $horizon_dir = '/usr/share/openstack-dashboard/openstack_dashboard'
 ) {
 
-  $horizon_dir = '/usr/share/openstack-dashboard'
-  $theme_dir = '/usr/share/openstack-dashboard-datacentred-theme'
+  # directory where themes are stored
+  $theme_dir = "${horizon_dir}/themes"
+  # directory to collect themes into
+  # NOTE: This path should be controlled by the STATIC_ROOT parameter in
+  # `local_settings.py` instead. Remove this when upstream allows to change
+  # the config option.
+  $collection_dir = '/var/lib/openstack-dashboard/static'
 
   file { $theme_dir:
     ensure  => directory,
@@ -26,16 +28,10 @@ class branding::horizon (
     recurse => true,
     purge   => true,
     force   => true,
-    source  => "puppet:///modules/branding/horizon-${release}",
+    source  => "puppet:///modules/branding",
   } ->
 
-  file { "${horizon_dir}/openstack_dashboard/static/themes/datacentred":
-    ensure  => link,
-    target  => $theme_dir,
-    require => Package['horizon'],
-  }
-
-  file { "${horizon_dir}/openstack_dashboard/themes/datacentred":
+  file { "${collection_dir}/themes/datacentred":
     ensure  => link,
     target  => $theme_dir,
     require => Package['horizon'],
