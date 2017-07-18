@@ -3,3 +3,8 @@
 // -----------------------------------------------------
 @import "/horizon/lib/bootstrap_scss/scss/bootstrap/mixins/vendor-prefixes";
 @import "/horizon/lib/bootswatch/paper/bootswatch";
+
+.btn {
+  // get rid of this annoying collapse transition
+  @include transition(none);
+}

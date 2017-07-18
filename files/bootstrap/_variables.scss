@@ -51,3 +51,18 @@ $navbar-default-link-disabled-color:       $gray-light;
 // doesn't work this way
 //$list-group-active-bg:          $component-active-bg;
 $list-group-active-bg:          $brand-secondary;
+
+//== Typography
+//
+//## Font, line-height, and color for body text, headings, and more.
+
+$font-family-sans-serif:  "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+//== Scaffolding
+//
+//## Settings for some of the most global styles.
+
+//** Global textual link colour.
+$link-color:            $brand-primary;
+//** Link hover colour as secondary.
+$link-hover-color:      $brand-secondary;
