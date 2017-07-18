@@ -5,6 +5,7 @@
 
 //== Colors
 //
+//##
 
 $brand-primary:         #213550;
 $brand-success:         #5cb85c;
@@ -14,7 +15,22 @@ $brand-danger:          #e30450;
 
 //== Navbar
 //
+//##
 
-//$navbar-default-color:             #fff;
+// navbar height - seems to affect the `min-height` instead of `height`,
+// so no effect with navbar-nav set to the old value
+//$navbar-height:                    48px;
+$navbar-border-radius:             0;
+
+$navbar-default-color:             #fff;
 $navbar-default-bg:                $brand-primary;
-$navbar-default-border:            #ccc;
+// not realy used anywhere...
+//$navbar-default-border:            #ccc;
+
+// Navbar links
+$navbar-default-link-color:                $navbar-default-color;
+$navbar-default-link-hover-color:          $navbar-default-color;
+$navbar-default-link-hover-bg:             darken($brand-primary, 5%);
+$navbar-default-link-active-color:         $navbar-default-color;
+$navbar-default-link-active-bg:            $navbar-default-link-hover-bg;
+$navbar-default-link-disabled-color:       $gray-light;
