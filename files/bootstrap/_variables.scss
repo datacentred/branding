@@ -13,6 +13,9 @@ $brand-info:            #5bc0de;
 $brand-warning:         #fdd835;
 $brand-danger:          #e30450;
 
+// custom variable to store the secondary color (light blue)
+$brand-secondary:       #60b8df;
+
 //== Navbar
 //
 //##
@@ -34,3 +37,17 @@ $navbar-default-link-hover-bg:             darken($brand-primary, 5%);
 $navbar-default-link-active-color:         $navbar-default-color;
 $navbar-default-link-active-bg:            $navbar-default-link-hover-bg;
 $navbar-default-link-disabled-color:       $gray-light;
+
+//** Global color for active items (e.g., navs or dropdowns).
+//$component-active-color:    #fff;
+//** Global background color for active items (e.g., navs or dropdowns).
+//$component-active-bg:       $brand-secondary;
+
+//== List group
+//
+//##
+
+//** Background color of active list items
+// doesn't work this way
+//$list-group-active-bg:          $component-active-bg;
+$list-group-active-bg:          $brand-secondary;
