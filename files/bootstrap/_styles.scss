@@ -8,3 +8,8 @@
   // get rid of this annoying collapse transition
   @include transition(none);
 }
+
+.navbar {
+  // a line below the navbar
+  border-bottom: 4px solid #60b8df;
+}
