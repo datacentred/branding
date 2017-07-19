@@ -47,3 +47,14 @@
     background-color: $gray-lighter;
   }
 }
+
+.panel-default > .panel-heading {
+  // sets proper background to the login header
+  background-color: $brand-primary;
+  border-bottom: 4px solid $brand-secondary;
+}
+
+.login .login-title {
+  // make the "Log in" string white
+  color: #fff;
+}

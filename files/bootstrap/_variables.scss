@@ -66,3 +66,20 @@ $font-family-sans-serif:  "Helvetica Neue", Helvetica, Arial, sans-serif;
 $link-color:            $brand-primary;
 //** Link hover colour as secondary.
 $link-hover-color:      $brand-secondary;
+
+//== The login screen
+
+//== Panels
+//
+//##
+
+// a white footer
+$panel-footer-bg:             $panel-bg;
+// this doesn't seem to change the background of the login page
+//$panel-primary-heading-bg:    $brand-primary;
+
+//== Buttons
+//
+//##
+
+$btn-primary-bg:                 $brand-secondary;
