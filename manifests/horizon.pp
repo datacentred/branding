@@ -12,13 +12,13 @@ class branding::horizon (
   $horizon_dir = '/usr/share/openstack-dashboard/openstack_dashboard'
 ) {
 
-  # directory where themes are stored
-  $theme_dir = "${horizon_dir}/themes"
+  # directory where the theme will be stored
+  $theme_dir = "${horizon_dir}/themes/datacentred"
   # directory to collect themes into
   # NOTE: This path should be controlled by the STATIC_ROOT parameter in
   # `local_settings.py` instead. Remove this when upstream allows to change
   # the config option.
-  $collection_dir = '/var/lib/openstack-dashboard/static'
+#  $collection_dir = '/var/lib/openstack-dashboard/static'
 
   file { $theme_dir:
     ensure  => directory,
@@ -29,14 +29,16 @@ class branding::horizon (
     purge   => true,
     force   => true,
     source  => "puppet:///modules/branding",
-  } ->
-
-  file { "${collection_dir}/themes/datacentred":
-    ensure  => link,
-    target  => $theme_dir,
     require => Package['horizon'],
+#  } ->
   }
 
-  File[$theme_dir] -> Exec[refresh_horizon_django_compress]
+#  file { "${collection_dir}/themes/datacentred":
+#    ensure  => link,
+#    target  => $theme_dir,
+#    require => Package['horizon'],
+#  }
+
+#  File[$theme_dir] -> Exec[refresh_horizon_django_compress]
 
 }
