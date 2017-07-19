@@ -13,3 +13,37 @@
   // a line below the navbar
   border-bottom: 4px solid #60b8df;
 }
+
+.nav-tabs {
+  // keep the line separating tabs from their content
+  border-bottom: 1px solid $gray-lighter;
+}
+
+.nav-tabs > li {
+  margin-bottom: -2px;
+}
+
+.nav-tabs {
+  > li.active {
+    // draws a line around the active tab
+    border: 1px solid $gray-lighter;
+    border-bottom: none;
+  }
+  & > li.active > a,
+  & > li.active > a:focus {
+    @include box-shadow(unset);
+  }
+}
+
+.nav-tabs {
+  > li > a {
+    // separate color for tabs and navbar items
+    color: $gray-base;
+  }
+}
+
+.nav-tabs {
+  > li > a:hover {
+    background-color: $gray-lighter;
+  }
+}
