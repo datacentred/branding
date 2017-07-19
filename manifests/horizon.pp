@@ -30,6 +30,7 @@ class branding::horizon (
     force   => true,
     source  => "puppet:///modules/branding",
     require => Package['horizon'],
+#    notify  => Exec['refresh_horizon_django_cache'],
 #  } ->
   }
 
@@ -40,5 +41,6 @@ class branding::horizon (
 #  }
 
 #  File[$theme_dir] -> Exec[refresh_horizon_django_compress]
+  File[$theme_dir] ~> Exec['refresh_horizon_django_cache'] -> Exec['refresh_horizon_django_compress']
 
 }
