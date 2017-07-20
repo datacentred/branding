@@ -29,7 +29,8 @@ class branding::horizon (
     purge   => true,
     force   => true,
     source  => "puppet:///modules/branding",
-    require => Package['horizon'],
+#    require => Package['horizon'],
+    require => Concat[$::horizon::params::config_file],
 #    notify  => Exec['refresh_horizon_django_cache'],
 #  } ->
   }
