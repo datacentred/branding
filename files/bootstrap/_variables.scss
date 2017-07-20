@@ -2,19 +2,25 @@
 // Variables
 // --------------------------------------------------
 @import "/horizon/lib/bootswatch/paper/variables";
+// Below are only variables that are being overwritten,
+// for a full list of variables, go to the imported
+// `_variables.scss` file.
 
 //== Colors
 //
 //##
 
+// primary colour: navy blue
 $brand-primary:         #213550;
 $brand-success:         #5cb85c;
 $brand-info:            #5bc0de;
 $brand-warning:         #fdd835;
 $brand-danger:          #e30450;
 
-// custom variable to store the secondary color (light blue)
+// secondary colour: light blue
 $brand-secondary:       #60b8df;
+
+//= Navbar section
 
 //== Navbar
 //
@@ -27,8 +33,6 @@ $navbar-border-radius:             0;
 
 $navbar-default-color:             #fff;
 $navbar-default-bg:                $brand-primary;
-// not realy used anywhere...
-//$navbar-default-border:            #ccc;
 
 // Navbar links
 $navbar-default-link-color:                $navbar-default-color;
@@ -38,19 +42,22 @@ $navbar-default-link-active-color:         $navbar-default-color;
 $navbar-default-link-active-bg:            $navbar-default-link-hover-bg;
 $navbar-default-link-disabled-color:       $gray-light;
 
-//** Global color for active items (e.g., navs or dropdowns).
-//$component-active-color:    #fff;
+//= Sidebar section
+
 //** Global background color for active items (e.g., navs or dropdowns).
 //$component-active-bg:       $brand-secondary;
 
 //== List group
 //
-//##
+//## These are elements of navs - they essentially make up the
+//## sidebar - and dropdowns
 
 //** Background color of active list items
 // doesn't work this way
 //$list-group-active-bg:          $component-active-bg;
 $list-group-active-bg:          $brand-secondary;
+
+//= Body section
 
 //== Typography
 //
@@ -62,6 +69,7 @@ $font-family-sans-serif:  "Helvetica Neue", Helvetica, Arial, sans-serif;
 //
 //## Settings for some of the most global styles.
 
+// colours for clickable links within the body
 //** Global textual link colour.
 $link-color:            $brand-primary;
 //** Link hover colour as secondary.
@@ -69,12 +77,12 @@ $link-hover-color:      $brand-secondary;
 
 //== Breadcrumbs
 //
-//##
+//## The upper ribbon showing current location
 
-// make the upper ribbon (breadcrumb) thinner
+// make the breadcrumbs thinner
 $breadcrumb-padding-vertical:   3px;
 
-//== The login screen
+//= Login screen section
 
 //== Panels
 //
