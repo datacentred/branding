@@ -1,60 +1,44 @@
 // Based on Paper
 // Bootswatch
 // -----------------------------------------------------
-@import "/horizon/lib/bootstrap_scss/scss/bootstrap/mixins/vendor-prefixes";
 @import "/horizon/lib/bootswatch/paper/bootswatch";
 
 .btn {
-  // get rid of this annoying collapse transition
+  // get rid of this annoying collapse/radiate transition
   @include transition(none);
-}
-
-.navbar {
-  // a line below the navbar
-  border-bottom: 4px solid #60b8df;
 }
 
 .nav-tabs {
   // keep the line separating tabs from their content
   border-bottom: 1px solid $gray-lighter;
-}
 
-.nav-tabs > li {
-  margin-bottom: -2px;
-}
+  & > li {
+    // lower list items slightly
+    margin-bottom: -2px;
 
-.nav-tabs {
-  > li.active {
-    // draws a line around the active tab
-    border: 1px solid $gray-lighter;
-    border-bottom: none;
+    &.active {
+      // draws a line around the active tab
+      border: 1px solid $gray-lighter;
+      border-bottom: none;
+
+      & > a,
+      & > a:focus {
+        @include box-shadow(unset);
+      }
+
+    }
+
+    & > a {
+      // separate color for tabs and navbar items
+      color: $gray-base;
+
+      &:hover {
+        // lit the tab gray when hovering over it
+        background-color: $gray-lighter;
+      }
+
+    }
+
   }
-  & > li.active > a,
-  & > li.active > a:focus {
-    @include box-shadow(unset);
-  }
-}
 
-.nav-tabs {
-  > li > a {
-    // separate color for tabs and navbar items
-    color: $gray-base;
-  }
-}
-
-.nav-tabs {
-  > li > a:hover {
-    background-color: $gray-lighter;
-  }
-}
-
-.panel-default > .panel-heading {
-  // sets proper background to the login header
-  background-color: $brand-primary;
-  border-bottom: 4px solid $brand-secondary;
-}
-
-.login .login-title {
-  // make the "Log in" string white
-  color: #fff;
 }
