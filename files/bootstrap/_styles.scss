@@ -1,0 +1,44 @@
+// Based on Paper
+// Bootswatch
+// -----------------------------------------------------
+@import "/horizon/lib/bootswatch/paper/bootswatch";
+
+.btn {
+  // get rid of this annoying collapse/radiate transition
+  @include transition(none);
+}
+
+.nav-tabs {
+  // keep the line separating tabs from their content
+  border-bottom: 1px solid $gray-lighter;
+
+  & > li {
+    // lower list items slightly
+    margin-bottom: -2px;
+
+    &.active {
+      // draws a line around the active tab
+      border: 1px solid $gray-lighter;
+      border-bottom: none;
+
+      & > a,
+      & > a:focus {
+        @include box-shadow(unset);
+      }
+
+    }
+
+    & > a {
+      // separate color for tabs and navbar items
+      color: $gray-base;
+
+      &:hover {
+        // lit the tab gray when hovering over it
+        background-color: $gray-lighter;
+      }
+
+    }
+
+  }
+
+}
