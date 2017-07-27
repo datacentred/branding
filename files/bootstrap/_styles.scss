@@ -42,3 +42,17 @@
   }
 
 }
+
+.form-group {
+
+  & .themable-select {
+    // make sure there is a frame around dropdowns
+    @include box-shadow(0 1px 4px rgba(0,0,0,.3));
+  }
+
+  & .dropdown-menu {
+    // by default this is transparent
+    background-color: #fff !important;
+  }
+
+}
