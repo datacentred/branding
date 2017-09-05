@@ -1,6 +1,12 @@
 .navbar-default {
   // a line below the navbar
   border-bottom: 4px solid $brand-secondary;
+
+  & .navbar-toggle .icon-bar {
+    // white menu bars on smaller screens
+    background-color: #fff;
+  }
+
 }
 
 #sidebar .panel {
@@ -16,5 +22,10 @@
 
 .login .login-title {
   // make the "Log in" string white
+  color: #fff;
+}
+
+.panel-title {
+  // make sure text is white
   color: #fff;
 }
